@@ -22,7 +22,7 @@ Copy-Item -ErrorAction Ignore "$dir\php.ini-development" $persist_dir
 
 # Enable extensions required by Laravel
 $laravel_ini = Join-Path -Path $confd -ChildPath "laravel-extensions.ini"
-if (!Test-Path $laravel_ini) {
+if (!(Test-Path $laravel_ini)) {
     New-Item -Type File -Path $laravel_ini
 }
 
