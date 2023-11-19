@@ -1,5 +1,12 @@
 param($dir)
 
+function Enable-Extension([string]$laravel_ini_content, [string]$extension) {
+    # ensure laravel ini contains extension
+    if ($laravel_ini_content -contains "extension=$extension" -ne $true) {
+        "extension=$extension" | Out-File -Path $laravel_ini -Append
+    }
+}
+
 # Create directory for custom PHP configuration
 $confd = "$dir\conf.d"
 
@@ -28,7 +35,14 @@ if (!(Test-Path $laravel_ini)) {
 
 $laravel_ini_content = (Get-Content $laravel_ini)
 
-# laravel ini contains "extension=openssl"?
-if ($laravel_ini_content -contains "extension=openssl" -ne $true) {
-    "extension=openssl" | Out-File -Path $laravel_ini -Append
-}
+Enable-Extension $laravel_ini_content "openssl"
+Enable-Extension $laravel_ini_content "curl"
+Enable-Extension $laravel_ini_content "xml"
+Enable-Extension $laravel_ini_content "fileinfo"
+Enable-Extension $laravel_ini_content "mbstring"
+Enable-Extension $laravel_ini_content "pdo_mysql"
+Enable-Extension $laravel_ini_content "pdo_oci"
+Enable-Extension $laravel_ini_content "pdo_odbc"
+Enable-Extension $laravel_ini_content "pdo_pgsql"
+Enable-Extension $laravel_ini_content "pdo_sqlite"
+Enable-Extension $laravel_ini_content "pgsql"
