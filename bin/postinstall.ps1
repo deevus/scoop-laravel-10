@@ -30,5 +30,5 @@ $laravel_ini_content = (Get-Content $laravel_ini)
 
 # laravel ini contains "extension=openssl"?
 if ($laravel_ini_content -contains "extension=openssl" -ne $true) {
-    Out-File -Path $laravel_ini -Append "extension=openssl"
+    "extension=openssl" | Out-File -Path $laravel_ini -Append
 }
