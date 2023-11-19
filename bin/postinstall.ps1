@@ -37,11 +37,9 @@ $laravel_ini_content = (Get-Content $laravel_ini)
 
 Enable-Extension $laravel_ini_content "openssl"
 Enable-Extension $laravel_ini_content "curl"
-Enable-Extension $laravel_ini_content "xml"
 Enable-Extension $laravel_ini_content "fileinfo"
 Enable-Extension $laravel_ini_content "mbstring"
 Enable-Extension $laravel_ini_content "pdo_mysql"
-Enable-Extension $laravel_ini_content "pdo_oci"
 Enable-Extension $laravel_ini_content "pdo_odbc"
 Enable-Extension $laravel_ini_content "pdo_pgsql"
 Enable-Extension $laravel_ini_content "pdo_sqlite"
